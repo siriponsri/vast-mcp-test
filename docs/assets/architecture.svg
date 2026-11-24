@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-labelledby="title desc">
+  <title id="title">Vast MCP local architecture</title>
+  <desc id="desc">The owner confirms a setup plan in PowerShell. Setup writes the Vast entry in the primary Codex configuration and uses the Claude Code CLI at user scope. Clients launch the PTP FastMCP server over stdio. The server exposes health, search offers and estimate cost using synthetic offers. Doctor checks those calls through its own stdio session. Live search is blocked until the Vast search-only grant is verified. The owner uses Vast Console separately for live operations.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#317d76" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="owner-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#87601f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#132639}
+      .h1{font-size:34px;font-weight:740;letter-spacing:-.8px}
+      .section{font-size:14px;font-weight:750;letter-spacing:1.4px}
+      .heading{font-size:21px;font-weight:725;letter-spacing:-.25px}
+      .body{font-size:17px;font-weight:490;fill:#37536a}
+      .small{font-size:15px;font-weight:590;fill:#37536a}
+      .mono{font-family:Consolas,"SFMono-Regular",monospace;font-size:16px;font-weight:600}
+      .edge{fill:none;stroke:#317d76;stroke-width:2}
+      .gate{fill:#704b0d}
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="998" height="638" rx="23" fill="#f4f8fa" stroke="#cbd9e1" stroke-width="2"/>
+  <text x="32" y="52" class="h1">Vast MCP architecture</text>
+  <text x="33" y="79" class="body">Windows setup and the local offer workflow</text>
+  <rect x="839" y="29" width="129" height="32" rx="16" fill="#def3ee"/>
+  <circle cx="856" cy="45" r="4" fill="#16776c"/>
+  <text x="867" y="50" class="small" style="fill:#165e54">Mock mode</text>
+
+  <rect x="24" y="102" width="952" height="391" rx="15" fill="#eaf2f6" stroke="#bdd0da" stroke-width="1.5"/>
+  <text x="48" y="129" class="section">OWNER’S WINDOWS MACHINE</text>
+
+  <rect x="48" y="145" width="904" height="63" rx="10" fill="#ffffff" stroke="#bdcfd9"/>
+  <rect x="64" y="161" width="29" height="27" rx="5" fill="#e1f3f0"/>
+  <path d="m71 168 5.5 5.5-5.5 5.5m9 0h6" fill="none" stroke="#16685d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="104" y="174" class="heading">Owner PowerShell</text>
+  <text x="104" y="195" class="small">Preview and confirm setup</text>
+  <text x="419" y="182" class="body">Edits the Codex TOML entry and calls the Claude Code CLI</text>
+  <path d="M170 209v39" class="edge" marker-end="url(#arrow)"/>
+  <text x="183" y="234" class="small">registration</text>
+
+  <rect x="48" y="252" width="242" height="151" rx="11" fill="#ffffff" stroke="#bdcfd9"/>
+  <text x="68" y="285" class="heading">MCP clients</text>
+  <text x="68" y="317" class="body">T3 on primary Codex</text>
+  <text x="68" y="343" class="body">Claude Code user scope</text>
+  <text x="68" y="379" class="small">Launch locked venv Python</text>
+
+  <path d="M294 324h75" class="edge" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="331" y="314" text-anchor="middle" class="small">stdio</text>
+
+  <rect x="374" y="252" width="250" height="151" rx="11" fill="#102c3b" stroke="#102c3b"/>
+  <rect x="374" y="252" width="250" height="5" rx="2.5" fill="#50d4bc"/>
+  <text x="394" y="285" class="heading" style="fill:#ffffff">PTP FastMCP server</text>
+  <text x="394" y="319" class="mono" style="fill:#c9eee7">health</text>
+  <text x="394" y="346" class="mono" style="fill:#c9eee7">search_gpu_offers</text>
+  <text x="394" y="373" class="mono" style="fill:#c9eee7">estimate_run_cost</text>
+
+  <path d="M629 324h73" class="edge" marker-end="url(#arrow)"/>
+  <text x="666" y="314" text-anchor="middle" class="small">uses</text>
+
+  <rect x="707" y="252" width="245" height="151" rx="11" fill="#ffffff" stroke="#bdcfd9"/>
+  <text x="727" y="285" class="heading">Synthetic offers</text>
+  <text x="727" y="317" class="body">GPU and disk filters</text>
+  <text x="727" y="343" class="body">PTP ranking and quote math</text>
+  <text x="727" y="369" class="body">Directional transfer costs</text>
+
+  <rect x="48" y="425" width="904" height="46" rx="8" fill="#dceeea"/>
+  <text x="68" y="453" class="mono" style="fill:#165e54">doctor --offline</text>
+  <text x="240" y="453" class="body">Opens a separate stdio session and verifies all three mock tool calls</text>
+
+  <rect x="24" y="517" width="952" height="98" rx="15" fill="#fcf4e5" stroke="#decaa5" stroke-width="1.5"/>
+  <text x="48" y="548" class="heading gate">Live search gate</text>
+  <text x="48" y="572" class="mono gate">BLOCKED_UNVERIFIED_VAST_SEARCH_SCOPE</text>
+  <text x="48" y="596" class="small gate">No provider key prompt while the grant is unverified</text>
+
+  <path d="M487 566h132" fill="none" stroke="#87601f" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#owner-arrow)"/>
+  <text x="553" y="553" class="small gate" text-anchor="middle">owner only</text>
+  <text x="638" y="558" class="heading gate">Vast Console</text>
+  <text x="638" y="584" class="body gate">Manual search and instance management</text>
+</svg>
