@@ -23,7 +23,7 @@ The architecture diagram is editable SVG with an accessible title and descriptio
 <details>
 <summary>Logo generation prompt</summary>
 
-Design an original icon-only project logo for Vast MCP, an independent local developer tool for GPU offer comparison. Flat geometric mark: a compact angular V formed by two circuit traces with two square connector nodes, centered inside a solid deep navy rounded square. Use bright mint teal as the single mark color. Crisp hard edges, robust thick strokes, generous padding, instantly recognizable at 32 px. Transparent outside the rounded square. Center the icon in a square canvas, and make the icon occupy about 85% of the canvas width. No lettering, no existing corporate marks, no gradients, no shadows, no mockup.
+Simplify the supplied Vast MCP logo. Retain the V-shaped circuit idea and remove the navy background tile entirely. Draw exactly one continuous, bold angular V in one solid medium teal color (#168479). Let each of its upper tips end in a single small filled square integrated into the stroke. Preserve an open center and a sharp lower vertex. Delete the second rail and all outlines, holes, shading, and frames. Center the mark optically on a square canvas with 14% clear padding. Crisp flat silhouette, readable at 32 × 32 pixels, no text. Fully transparent background.
 
 </details>
 
